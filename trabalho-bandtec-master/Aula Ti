@@ -1,0 +1,23 @@
+ID	        Requisitos 	                                                                                              Classificação 
+1       	O sistema tem que monitorar remotamente a temperatura 	                                                      Essencial
+2       	O sistema deve conter acessibilidade a qualquer usuario                                                     	Essencial
+3       	O sistema tem que conter cadastro de usuarios e produtos (com sistema de recuperação de senha)	              Essencial
+4	        Apresentar graficos para cada produto do usuario 	                                                            Essencial
+5	        Hardware para capacitação de dados (Arduino)	                                                                Essencial
+6	        Sistema de alerta  para avisar o usuario sobre a queda de temperatura	                                        Essencial
+7	        Um banco de dados relancionando todas as operações                                                           	Essencial
+8	        Ter conhecimento de quais vacinas serão o foco do projeto 	                                                  Importante
+9	        Como esse problema vem se agravando	                                                                          Importante
+10        Como é o mercado onde vamos atuar	                                                                            Importante
+11	      Como é o transporte é realizado no Brasil	                                                                    Importante
+12	      Ter propriedade do ambiente em que as vacinas são armazenadas	                                                Importante
+13	      Montar toda uma infra do projeto	                                                                            Importante
+14        Custos de operação	                                                                                          Importante
+15        Prazos	                                                                                                      Importante
+16        Manter um dessenvolvimento constante	                                                                        Importante
+17	      Definir e renovar pontos iniciais	                                                                            Importante
+18	      Adicionar novas funcionalidades	                                                                              Desejavel
+19	      Criar que se adapte a qualquer 	                                                                              Desejavel
+20	      Criar um relatório automatico de temperatura	                                                                Desejavel
+21	      Atingir futuramente Zoo laboratorios                                                                        	Desejavel
+22	      Fazer um sistema intuitivo de facil navegação                                                               	Desejavel

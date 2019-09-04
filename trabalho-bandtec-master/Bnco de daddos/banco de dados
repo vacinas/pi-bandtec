@@ -1,0 +1,156 @@
+-- Cria o banco de dados (schema) adsa
+create database adsa;
+
+-- Seleciona o banco de dados adsa
+use adsa;
+
+-- Cria tabela Aluno com os campos ra, nome, bairro
+-- ra é criado com o tipo int, pois vai conter valores numéricos inteiros
+-- ra também é configurado como chave primária
+-- nome e bairro são criados com o tipo varchar, pois vão conter caracteres
+create table Aluno (
+  ra int primary key,  -- ra é a chave primária da tabela Aluno
+  nome varchar(40),
+  bairro varchar(40)
+ ); 
+ 
+ -- Exibe os dados da tabela
+ -- O asterisco após o select significa que vai mostrar todas as colunas da tabela
+ select * from Aluno;
+  -- MySQL não distingue letra maiúscula de letra minúscula
+ select * from aluno;
+ 
+ -- Insere dados de um aluno
+ insert into Aluno values 
+    (01192027,'Wellington','Vila Brasilandia'); 
+    
+-- Insere dados de vários alunos de uma vez
+-- Repare que os dados de cada aluno estão entre parênteses, separados por vírgulas    
+ insert into Aluno values
+    (01192124,'Roberto','Jardim Primavera'),
+    (01192123,'Ranyery','Jardim Audir'),
+    (01192053,'Naomi','Vila Leopoldina'),
+    (01192089,'Ricardo','Jardim Alzira');
+    
+-- Exibe apenas a coluna nome da tabela Aluno    
+select nome from Aluno;
+
+-- Exibe as colunas nome e bairro da tabela Aluno
+select nome,bairro from Aluno;
+
+-- Exibe as colunas bairro e o ra da tabela Aluno, nessa ordem
+select bairro,ra from Aluno;
+
+-- Exibe novamente todos os dados da tabela
+select * from Aluno;
+
+-- Exibe apenas os dados do aluno de ra = 1192089
+-- where serve para especificar o "filtro" das linhas que vc quer ver
+-- Neste caso, vai trazer apenas a linha do aluno de ra = 1192089
+select * from Aluno where ra = 1192089;
+
+-- Exibe os dados dos alunos cujo ra é maior ou igual a 1192089
+select * from Aluno where ra >= 1192089;
+
+-- Exibe os dados dos alunos cujo ra é diferente de 1192089
+-- No padrão SQL, diferente é sinalizado por <>
+-- No MySQL e no SQL Server, diferente também pode ser !=
+select * from Aluno where ra <> 1192089;
+select * from Aluno where ra != 1192089;
+
+-- Exibe os alunos cujo nome começa com a letra r
+-- O sinal de porcentagem significa zero ou mais caracteres
+select * from Aluno where nome like 'R%';
+
+-- Exibe os alunos cujo bairro começa com Vila
+select * from Aluno where bairro like 'Vila%';
+
+-- Exibe os alunos cujo nome termina com o
+select * from Aluno where nome like '%o';
+
+-- Exibe os alunos cujo nome tenha a letra i como 2a letra
+-- O caractere _ significa um caractere 
+select * from Aluno where nome like '_i%';
+
+-- Exibe os alunos cujo bairro tenha a alguma palavra
+-- terminada em m
+select * from Aluno where bairro like '%m %';
+
+-- Exibe os alunos cujo bairro tenha a letra e como 
+-- a 3a letra de trás para frente
+select * from Aluno where bairro like '%e__';
+
+-- Exibe novamente todos os dados da tabela
+select * from Aluno;
+
+-- Exibe os dados dos alunos ordenados pelo nome (em ordem ascendente)
+select * from Aluno order by nome;
+
+-- Idem ao comando de cima
+-- A palavra asc significa ordem ascendente e é opcional
+-- Quando não se especifica a ordem, automaticamente considera-se a ordem ascendente
+select * from Aluno order by nome asc;
+
+-- Exibe os dados dos alunos ordenados pelo nome, em ordem descendente (do Z para o A)
+select * from Aluno order by nome desc;
+
+-- Exibe os dados dos alunos ordenados pelo bairro
+select * from Aluno order by bairro;
+
+-- Inserção dos dados de mais um aluno da 'Vila Leopoldina'
+insert into Aluno values
+    (01192109,'Natanael','Vila Leopoldina');
+    
+-- Exibe novamente os dados de todos os alunos    
+select * from Aluno; 
+
+-- Exibe os dados dos alunos ordenados pelo bairro (em ordem ascendente)
+-- e se coincidir o bairro, alunos do mesmo bairro serão ordenados pelo nome
+-- em ordem descendente   
+select * from Aluno order by bairro,nome desc;
+
+-- Exibe os dados dos alunos ordenados pelo bairro (em ordem descendente)
+-- e se coincidir o bairro, alunos do mesmo bairro serão ordenados pelo nome
+-- em ordem descendente   
+select * from Aluno order by bairro desc,nome desc;
+
+-- Exibe apenas os alunos cujo bairro é 'Vila Leopoldina'
+select * from Aluno where bairro = 'Vila Leopoldina';
+
+-- Exibe os dados dos alunos cujo nome não começa com R
+select * from Aluno where nome not like 'R%';
+
+-- Exibe os dados da tabela 
+select * from Aluno;
+
+-- Altera o nome do aluno de ra = 1192124 para 'Roberto Volpe'
+-- ATENÇÃO: se não colocar where ra = 1192124, esse comando mudará o nome de TODOS da tabela.
+update Aluno set nome = 'Roberto Volpe'
+    where ra = 1192124;
+-- Execute novamente o select * from Aluno; para ver a alteração efetuada    
+    
+-- Altera o ra e o bairro do aluno de ra=1192109    
+update Aluno set ra=1192999, bairro='Marechal Deodoro'
+    where ra = 1192109;
+    
+-- Exclui os dados do aluno Natanel
+-- ATENÇÂO: se o comando for apenas delete from Aluno; -- vai excluir os dados de TODA a TABELA!!!
+delete from Aluno where ra = 1192999;
+
+-- Exiba novamente os dados da tabela, para verificar que o aluno Natanael foi excluído
+select * from Aluno;
+
+-- Exibe os dados dos alunos cujo ra está entre 1192060 e 1192120
+-- Os dois comandos abaixo são equivalentes
+select * from Aluno where ra between 1192060 and 1192120;
+select * from Aluno where ra >= 1192060 and 
+                          ra <= 1192120;
+                          
+-- Exclui a tabela Aluno
+drop table Aluno;
+
+-- Exclui o banco de dados adsa
+drop database adsa;
+
+-- describe 
+descreve colunas;

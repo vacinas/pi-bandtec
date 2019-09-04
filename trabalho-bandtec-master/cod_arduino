@@ -1,0 +1,38 @@
+// #include <DHT.h>      inclui a biblioteca do dht11
+// #include <DHT_U.h>    inclui a biblioteca do dht11
+
+
+#define DHTPIN A1 // pino que estamos conectado
+#define DHTTYPE DHT11 // DHT 11
+
+DHT dht(DHTPIN, DHTTYPE); // define o sensor com ambas as variávies presentes no código
+
+void setup() {
+  Serial.begin(9600); // inicia a comunicação serial 
+  Serial.println("DHTxx test!"); // escreve o selecionado no serial monitor
+  dht.begin(); // inicia o sensor
+}
+
+void loop() {
+  
+
+  float h = dht.readHumidity(); // armazena numa variável float o valor lido de umidade
+  float t = dht.readTemperature(); // armazena numa variável float o valor de temperatura
+
+  if (isnan(t) || isnan(h)) // cria uma situação com duas saídas
+  {
+    Serial.println("Failed to read from DHT"); // caso não esteja funcionando como deveria
+    }
+    else // funcionando como deveria
+    {
+      Serial.print("Umidade: "); // escreve no serial monitor o que foi inserido
+      Serial.print(h); // escreve no serial monitor o valor da variável "h"
+      Serial.print(" %t"); // escreve no serial monitor o que foi inserido
+      Serial.print("Temperatura: "); // escreve no serial monitor o que foi inserido
+      Serial.print(t); //  escreve no serial monitor o valor da variável "t"
+      Serial.println(" *C"); // escreve no serial monitor o que foi inserido
+
+
+      delay(2000); // estabelece o tempo de comunicação em 2 segundos
+      }
+}

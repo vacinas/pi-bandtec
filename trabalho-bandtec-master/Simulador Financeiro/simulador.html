@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/style.css">
+    <title>SIMULADOR FINANCEIRO</title>
+</head>
+<style>
+
+
+</style>
+
+<body style="background-color: rgb(139, 212, 236)">
+    
+
+<div id="geral">
+  
+ 
+ <img src="img/logo.png" width="300px">
+
+  <p> <b> <h3 style="color: white; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 17px ">INFORME EM R$ AS PERDAS <br> MENSAIS COM VACINAS :</h3> </b>  
+    <input type="" placeholder="R$" id="gastos" autofocus></p>
+
+    <p> <b> <h3 style="color: white; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; font-size: 17px">INFORME QUANTAS VACINAS <br> SE PERDEM MENSALMENTE: </h3> </b> 
+      <input type="" placeholder="Vacinas" id="vacinas"></p> 
+
+
+
+
+
+
+
+<p><div id="msn1"  style=" background-color: lightblue;  box-sizing: border-box;  width: 300px;  padding: 25px; display: none; color: #008CBA"></div></p> 
+
+<p><div id="msn2" style="background-color: whitesmoke;  box-sizing: border-box;  width: 300px;  padding: 25px; display: none; color: #008CBA"></div></p> 
+
+  
+ <p><b><button onclick="simular()" class="button button1" >Calcular Economia</b></button>
+ </p>
+
+<P><b><button onclick="limpar()" class="button button2"> Limpar Campos</b></button></P> 
+
+
+</div>
+
+ 
+
+</body>
+</html>
+
+<script>
+
+function simular() {
+
+var perdas = parseFloat(vacinas.value);
+var perda_anual = perdas * 12;
+var perdas_gastos = parseFloat(gastos.value);
+var imunodata = (perdas_gastos) -100;
+var economia = imunodata;
+var total_ano = (economia) * 12 ;
+var total = total_ano -4000;
+
+
+msn1.innerHTML = `<b> Você irá economizar Anualmente: ${total} R$ em Vacinas</b> `;
+msn2.innerHTML = `<b> E Deixará de perder anualmente: ${perda_anual} Vacinas </b> `;
+
+msn1.style.display = 'block';
+msn2.style.display = 'block';
+
+
+
+}
+
+function limpar() {
+   if(document.getElementById('gastos').value!="") {
+     document.getElementById('gastos').value="";
+     document.getElementById('vacinas').value="";
+     }
+  } 
+
+  
+
+
+
+</script>
